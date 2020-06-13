@@ -29,21 +29,19 @@
     <a href="/api/table">API Table Link</a><span> | </span><a href="/api/waitingList">API Wait List</a>
 
     <script type="text/javascript">
-        // Question: What does this code do?
-        $("#add-btn").on("click", event => {
+        $("#btn").on("click", event => {
           event.preventDefault();
-          var newCharacter = {
+          var newTable = {
             name: $("#name").val().trim(),
-            role: $("#role").val().trim(),
-            age: $("#age").val().trim(),
-            forcePoints: $("#force-points").val().trim()
+            phoneNumber: $("#phoneNumber").val().trim(),
+            email: $("#email").val().trim(),
+            uniqueID: $("#uniqueID").val().trim()
           };
     
-          // Question: What does this code do??
-          $.post("/api/characters", newCharacter)
+          $.post("/api/table", newTable)
             .then(data => {
-              console.log("add.html", data);
-              alert("Adding character...");
+              console.log("table.html", data);
+              alert("Adding table reservation...");
             });
         });
       </script>
