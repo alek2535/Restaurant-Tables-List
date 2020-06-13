@@ -4,6 +4,10 @@ const express = require("express");
 const path = require("path");
 
 const express = require("express");
+<<<<<<< HEAD
+=======
+const { table } = require("console");
+>>>>>>> master
 // Sets up the Express App
 // =============================================================
 const app = express();
@@ -40,6 +44,29 @@ app.get("/api/table", function(req, res) {
   app.get("/api/waitingList", function(req, res) {
     res.json(waitingList);
   });
+
+
+// POST
+
+app.post("/api/table", (req, res) => {
+  const newTable = req.body;
+
+  newTable.routeName = newTable.name.replace(/\s+/g, "").toLowerCase();
+
+  table.push(newTable);
+
+  res.json(newTable);
+});
+
+app.post("/api/waitingList", (req, res) => {
+  const waitingTable = req.body;
+
+  waitingTable.routeName = waitingTable.name.replace(/\s+/g, "").toLowerCase();
+
+  waitingList.push(waitingTable);
+
+  res.json(waitingTable);
+});
 
 
 // Starts the server to begin listening
