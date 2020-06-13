@@ -62,11 +62,11 @@ app.post("/api/waitingList", (req, res) => {
 // HTML Routes
 // =============================================================
 
-app.get("/tables", function(req, res) {
+app.get("/table", function(req, res) {
   res.sendFile(path.join(__dirname, "../public/Make.html"));
 });
 
-app.get("/reserve", function(req, res) {
+app.get("/waitingList", function(req, res) {
   res.sendFile(path.join(__dirname, "../public/View.html"));
 });
 
