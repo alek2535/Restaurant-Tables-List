@@ -19,5 +19,6 @@
   "homepage": "https://github.com/alek2535/Restaurant-Tables-List#readme",
   "dependencies": {
     "express": "^4.17.1"
-  }
+  },
+  "devDependencies": {}
 }

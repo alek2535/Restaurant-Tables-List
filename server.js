@@ -3,11 +3,7 @@
 const express = require("express");
 const path = require("path");
 
-const express = require("express");
-<<<<<<< HEAD
-=======
-const { table } = require("console");
->>>>>>> master
+// const { table } = require("console");
 // Sets up the Express App
 // =============================================================
 const app = express();
@@ -17,7 +13,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Table Reservation (DATA)
-//
 // =============================================================
 const table = [
   { name:"",
@@ -68,6 +63,21 @@ app.post("/api/waitingList", (req, res) => {
   res.json(waitingTable);
 });
 
+// HTML Routes
+// =============================================================
+
+app.get("/tables", function(req, res) {
+  res.sendFile(path.join(__dirname, "../public/Make.html"));
+});
+
+app.get("/reserve", function(req, res) {
+  res.sendFile(path.join(__dirname, "../public/View.html"));
+});
+
+// If no matching route is found default to home
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "../public/Home.html"));
+});
 
 // Starts the server to begin listening
 // =============================================================
