@@ -4,7 +4,10 @@ const express = require("express");
 const path = require("path");
 
 const express = require("express");
+<<<<<<< HEAD
+=======
 const { table } = require("console");
+>>>>>>> master
 // Sets up the Express App
 // =============================================================
 const app = express();
@@ -13,7 +16,23 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
+// Table Reservation (DATA)
+//
+// =============================================================
+const table = [
+  { name:"",
+    phoneNumber:"",
+    email:"",
+    uniqueID:"",
+  }
+]
+const waitingList = [
+  { name:"",
+    phoneNumber:"",
+    email:"",
+    uniqueID:"",
+  }
+]
 // API Routes
 // =============================================================
 
