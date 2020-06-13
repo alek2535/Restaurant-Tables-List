@@ -32,13 +32,9 @@ const waitingList = [
 // =============================================================
 
 // GET 
-app.get("/api/table", function(req, res) {
-    res.json(table);
-  });
+app.get("/api/table", (req, res) => res.json(table));
 
-  app.get("/api/waitingList", function(req, res) {
-    res.json(waitingList);
-  });
+app.get("/api/waitingList", (req, res) => res.json(waitingList));
 
 
 // POST
@@ -74,13 +70,11 @@ app.get("/reserve", function(req, res) {
   res.sendFile(path.join(__dirname, "../public/View.html"));
 });
 
-// If no matching route is found default to home
+// default to home
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "../public/Home.html"));
 });
 
 // Starts the server to begin listening
 // =============================================================
-app.listen(PORT, function() {
-  console.log("App listening on PORT: " + PORT);
-});
+app.listen(PORT, () => console.log("App listening on PORT: " + PORT));
