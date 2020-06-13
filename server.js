@@ -1,13 +1,14 @@
 // Dependencies
 // =============================================================
-var express = require("express");
-var path = require("path");
+const express = require("express");
+const path = require("path");
 
-var express = require("express");
+const express = require("express");
+const { table } = require("console");
 // Sets up the Express App
 // =============================================================
-var app = express();
-var PORT = process.env.PORT || 3000;
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -24,6 +25,29 @@ app.get("/api/table", function(req, res) {
   app.get("/api/waitingList", function(req, res) {
     res.json(waitingList);
   });
+
+
+// POST
+
+app.post("/api/table", (req, res) => {
+  const newTable = req.body;
+
+  newTable.routeName = newTable.name.replace(/\s+/g, "").toLowerCase();
+
+  table.push(newTable);
+
+  res.json(newTable);
+});
+
+app.post("/api/waitingList", (req, res) => {
+  const waitingTable = req.body;
+
+  waitingTable.routeName = waitingTable.name.replace(/\s+/g, "").toLowerCase();
+
+  waitingList.push(waitingTable);
+
+  res.json(waitingTable);
+});
 
 
 // Starts the server to begin listening
