@@ -3,11 +3,7 @@
 const express = require("express");
 const path = require("path");
 
-const express = require("express");
-<<<<<<< HEAD
-=======
-const { table } = require("console");
->>>>>>> master
+// const { table } = require("console");
 // Sets up the Express App
 // =============================================================
 const app = express();
@@ -37,13 +33,9 @@ const waitingList = [
 // =============================================================
 
 // GET 
-app.get("/api/table", function(req, res) {
-    res.json(table);
-  });
+app.get("/api/table", (req, res) => res.json(table));
 
-  app.get("/api/waitingList", function(req, res) {
-    res.json(waitingList);
-  });
+app.get("/api/waitingList", (req, res) => res.json(waitingList));
 
 
 // POST
@@ -71,6 +63,4 @@ app.post("/api/waitingList", (req, res) => {
 
 // Starts the server to begin listening
 // =============================================================
-app.listen(PORT, function() {
-  console.log("App listening on PORT: " + PORT);
-});
+app.listen(PORT, () => console.log("App listening on PORT: " + PORT));
