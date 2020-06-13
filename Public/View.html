@@ -22,7 +22,7 @@
       <hr>
       <h2>Current Reservations and Waiting List</h2>
       <br>
-      <a href="/add"><button class="btn btn-danger btn-lg"><span class="fa fa-credit-card"></span> Make Reservations</button></a>
+      <a href="/waitingList"><button class="btn btn-danger btn-lg"><span class="fa fa-credit-card"></span> Make Reservations</button></a>
       <a href="/"><button class="btn btn-lg"><span class="fa fa-home"></span></button></a>
     </div>
     <div class="row">
@@ -34,11 +34,12 @@
                     <h3>Current Reservations</h3>
                 </div>
                 <div class="card-body">
-                    <!-- <h2 id="name">Table #1</h2>
-                    <div id="stats">
-                    <h3><strong>ID:</strong> <span id="role"></span></h3>
-                    <h3><strong>Email:</strong> <span id="age"></span></h3>
-                    <h3><strong>Force Points:</strong> <span id="force-points">2000</span></h3>
+                    <!-- <h2 id="">Table #1</h2>
+                    <div id="table">
+                    <h3>Name: <span id="name"></span></h3>
+                    <h3>ID: <span id="id"></span></h3>
+                    <h3>Email: <span id="email"></span></h3>
+                    <h3>Phone: <span id="phone"></span></h3>
                     </div> -->
                 </div>
             </div>
@@ -49,16 +50,17 @@
                 <h3>Waiting List</h3>
                 </div>
                 <div class="card-body">
-                <!-- <h2 id="name">Table #1</h2>
-                <div id="stats">
-                    <h3><strong>ID:</strong> <span id="role"></span></h3>
-                    <h3><strong>Email:</strong> <span id="age"></span></h3>
-                    <h3><strong>Force Points:</strong> <span id="force-points">2000</span></h3>
+                <!-- <h2 id="">Table #1</h2>
+                    <div id="waiting-list">
+                    <h3>Name: <span id="name"></span></h3>
+                    <h3>ID: <span id="id"></span></h3>
+                    <h3>Email: <span id="email"></span></h3>
+                    <h3>Phone: <span id="phone"></span></h3>
                 </div> -->
                 </div>
             </div>
             <br>
-            <a href="/clear">Clear Table</a><span> | </span><a href="/api/tables">API Table Link</a><span> | </span><a href="/api/waiting">API Wait List</a>
+            <a href="#" id="clear">Clear Table</a><span> | </span><a href="/api/table">API Table Link</a><span> | </span><a href="/api/waitingList">API Wait List</a>
         </div>
     </div>
   </div>
@@ -71,7 +73,7 @@
       // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
       searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
 
-      $.get("/api/characters/" + searchedCharacter, function(data) {
+      $.get("/api/characters/" + searchedCharacter, data => {
         console.log(data);
         if (data) {
           $("#stats").show();
