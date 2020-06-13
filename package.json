@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/alek2535/Restaurant-Tables-List/issues"
   },
-  "homepage": "https://github.com/alek2535/Restaurant-Tables-List#readme"
+  "homepage": "https://github.com/alek2535/Restaurant-Tables-List#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
