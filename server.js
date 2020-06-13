@@ -13,7 +13,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Table Reservation (DATA)
-//
 // =============================================================
 const table = [
   { name:"",
@@ -60,6 +59,21 @@ app.post("/api/waitingList", (req, res) => {
   res.json(waitingTable);
 });
 
+// HTML Routes
+// =============================================================
+
+app.get("/tables", function(req, res) {
+  res.sendFile(path.join(__dirname, "../public/Make.html"));
+});
+
+app.get("/reserve", function(req, res) {
+  res.sendFile(path.join(__dirname, "../public/View.html"));
+});
+
+// default to home
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "../public/Home.html"));
+});
 
 // Starts the server to begin listening
 // =============================================================
