@@ -1,18 +1,34 @@
 // Dependencies
 // =============================================================
-var express = require("express");
-var path = require("path");
+const express = require("express");
+const path = require("path");
 
-var express = require("express");
+const express = require("express");
 // Sets up the Express App
 // =============================================================
-var app = express();
-var PORT = process.env.PORT || 3000;
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
+// Table Reservation (DATA)
+//
+// =============================================================
+const table = [
+  { name:"",
+    phoneNumber:"",
+    email:"",
+    uniqueID:"",
+  }
+]
+const waitingList = [
+  { name:"",
+    phoneNumber:"",
+    email:"",
+    uniqueID:"",
+  }
+]
 // API Routes
 // =============================================================
 
