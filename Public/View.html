@@ -22,7 +22,7 @@
       <hr>
       <h2>Current Reservations and Waiting List</h2>
       <br>
-      <a href="/waitingList"><button class="btn btn-danger btn-lg"><span class="fa fa-credit-card"></span> Make Reservations</button></a>
+      <a href="/table"><button class="btn btn-danger btn-lg"><span class="fa fa-credit-card"></span> Make Reservations</button></a>
       <a href="/"><button class="btn btn-lg"><span class="fa fa-home"></span></button></a>
     </div>
     <div class="row">
@@ -34,13 +34,7 @@
                     <h3>Current Reservations</h3>
                 </div>
                 <div class="card-body">
-                    <!-- <h2 id="">Table #1</h2>
-                    <div id="table">
-                    <h3>Name: <span id="name"></span></h3>
-                    <h3>ID: <span id="id"></span></h3>
-                    <h3>Email: <span id="email"></span></h3>
-                    <h3>Phone: <span id="phone"></span></h3>
-                    </div> -->
+                  <ul id="tables" class="list-group"></ul>
                 </div>
             </div>
         
@@ -50,13 +44,7 @@
                 <h3>Waiting List</h3>
                 </div>
                 <div class="card-body">
-                <!-- <h2 id="">Table #1</h2>
-                    <div id="waiting-list">
-                    <h3>Name: <span id="name"></span></h3>
-                    <h3>ID: <span id="id"></span></h3>
-                    <h3>Email: <span id="email"></span></h3>
-                    <h3>Phone: <span id="phone"></span></h3>
-                </div> -->
+                  <ul id="waiting" class="list-group"></ul>
                 </div>
             </div>
             <br>
@@ -66,28 +54,47 @@
   </div>
 
   <script type="text/javascript">
-    $("#search-btn").on("click", function() {
-      var searchedCharacter = $("#character-search").val().trim();
 
-      // Using a RegEx Pattern to remove spaces from searchedCharacter
-      // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-      searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
+      $.get("/api/table", table => {
+        console.log(table);
 
-      $.get("/api/characters/" + searchedCharacter, data => {
-        console.log(data);
-        if (data) {
-          $("#stats").show();
-          $("#name").text(data.name);
-          $("#role").text(data.role);
-          $("#age").text(data.age);
-          $("#force-points").text(data.forcePoints);
-        } else {
-          $("#name").text(
-            "The force is not strong with this one. Your character was not found.");
-          $("#stats").hide();
-        }
+        for (let i = 0; i < table.length; i++) {
+          const tableList = $("#tables");
+          const listItem = $("<li class='list-group-item mt -4'>");
+          
+          listItem.append(
+            $("<h2>").text(`Table #${i + 1}`),
+            $("<hr>"),
+            $("<h2>").text(`Name: ${table[i].name}`),
+            $("<h2>").text(`Phone Number: ${table[i].phoneNumber}`),
+            $("<h2>").text(`Email: ${table[i].email}`),
+            $("<h2>").text(`Unique ID: ${table[i].uniqueID}`)
+          );
+
+          tableList.append(listItem);
+        };
       });
-    });
+
+      $.get("/api/waitingList", waitingList => {
+        console.log(waitingList);
+
+        for (let i = 0; i < waitingList.length; i++) {
+          const waitList = $("#waiting");
+          const listItem = $("<li class='list-group-item mt -4'>");
+          
+          listItem.append(
+            $("<h2>").text(`Table #${i + 1}`),
+            $("<hr>"),
+            $("<h2>").text(`Name: ${waitingList[i].name}`),
+            $("<h2>").text(`Phone Number: ${waitingList[i].phoneNumber}`),
+            $("<h2>").text(`Email: ${waitingList[i].email}`),
+            $("<h2>").text(`Unique ID: ${waitingList[i].uniqueID}`)
+          );
+
+          waitList.append(listItem);
+        };
+
+      });
 
   </script>
 </body>

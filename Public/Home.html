@@ -22,13 +22,21 @@
       <hr>
       <h3>We only have 5 Tables Available! Book your seat now before they're all gone!</h3>
       <br>
-      <a href="/table"><button class="btn btn-primary btn-lg"><span class="fa fa-list-alt"></span> View Tables</button></a>
-      <a href="/waitingList"><button class="btn btn-danger btn-lg"><span
+      <a href="/waitingList"><button id="table" class="btn btn-primary btn-lg"><span class="fa fa-list-alt"></span> View Tables</button></a>
+      <a href="/table"><button id="makeList" class="btn btn-danger btn-lg"><span
             class="fa fa-credit-card"></span> Make Reservation</button></a>
     </div>
     <a href="/api/table">API Table Link</a><span> | </span><a href="/api/waitingList">API Wait List</a>
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
+        $("#table").on("click", event => {
+          $.get("/api/table", newTable)
+            .then(data => {
+              console.log("table.html", data);
+              alert("Adding table reservation...");
+            });
+        });
+
         $("#btn").on("click", event => {
           event.preventDefault();
           var newTable = {
@@ -44,7 +52,7 @@
               alert("Adding table reservation...");
             });
         });
-      </script>
+      </script> -->
     
     </body>
     </html>

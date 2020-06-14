@@ -15,18 +15,18 @@ app.use(express.json());
 // Table Reservation (DATA)
 // =============================================================
 const table = [
-  { name:"",
-    phoneNumber:"",
-    email:"",
-    uniqueID:"",
-  }
+  // { name:"",
+  //   phoneNumber:"",
+  //   email:"",
+  //   uniqueID:"",
+  // }
 ]
 const waitingList = [
-  { name:"",
-    phoneNumber:"",
-    email:"",
-    uniqueID:"",
-  }
+  // { name:"",
+  //   phoneNumber:"",
+  //   email:"",
+  //   uniqueID:"",
+  // }
 ]
 // API Routes
 // =============================================================
@@ -63,16 +63,16 @@ app.post("/api/waitingList", (req, res) => {
 // =============================================================
 
 app.get("/table", function(req, res) {
-  res.sendFile(path.join(__dirname, "../public/Make.html"));
+  res.sendFile(path.join(__dirname, "./public/Make.html"));
 });
 
 app.get("/waitingList", function(req, res) {
-  res.sendFile(path.join(__dirname, "../public/View.html"));
+  res.sendFile(path.join(__dirname, "./public/View.html"));
 });
 
 // default to home
 app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "../public/Home.html"));
+  res.sendFile(path.join(__dirname, "./public/Home.html"));
 });
 
 // Starts the server to begin listening
